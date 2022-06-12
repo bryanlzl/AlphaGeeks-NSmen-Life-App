@@ -8,7 +8,7 @@ import { ColorSchemeName } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
-import { MaterialIcons, MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
 import ModalScreen from "../screens/ModalScreen";
@@ -95,10 +95,6 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function TabBarIcon(props: { name: React.ComponentProps<typeof MaterialIcons>["name"]; color: string }) {
-    return <MaterialIcons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
-
 function MCIcon(props: { name: React.ComponentProps<typeof MaterialCommunityIcons>["name"]; color: string }) {
     return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
