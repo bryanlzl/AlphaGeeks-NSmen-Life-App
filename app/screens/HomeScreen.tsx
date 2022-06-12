@@ -1,6 +1,6 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import { StyleSheet, Image, ScrollView, Button } from "react-native";
+import { StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
 
@@ -12,29 +12,32 @@ interface Menu {
 
 interface RenderMenuProps {
     menus: Menu[];
+    navigation: RootTabScreenProps<"Profile">;
 }
-
-const RenderMenu = ({ menus }: RenderMenuProps) => {
-    return menus.map((m, index) => {
-        return (
-            <View style={styles.image_tile}>
-                <Text style={styles.menu_title} key={index}>
-                    {m.title}
-                </Text>
-            </View>
-        );
-    });
-};
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
     const menuTiles: Menu[] = [
-        { title: "IPPT / NS Fit", image: "", href: "" },
-        { title: "Claims", image: "", href: "" },
-        { title: "ORNS activities", image: "", href: "" },
+        { title: "IPPT / NS Fit", image: "", href: "Profile" },
+        { title: "Claims", image: "", href: "Profile" },
+        { title: "ORNS activities", image: "", href: "Profile" },
     ];
 
+    const RenderMenu = ({ menus }: RenderMenuProps) => {
+        return menus.map((m, index) => {
+            return (
+                <TouchableOpacity onPress={() => navigation.navigate(m.href)}>
+                    <View style={styles.image_tile}>
+                        <Text style={styles.menu_title} key={index}>
+                            {m.title}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            );
+        });
+    };
+
     return (
-        <ScrollView>
+        <ScrollView style={styles.scroll_view}>
             <View style={styles.header}>
                 <Text style={styles.title} lightColor="#FA0606" darkColor="#000">
                     Welcome, John Tan
@@ -42,14 +45,15 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
                 <Image style={styles.image} source={nsLogo} />
             </View>
 
-            <RenderMenu menus={menuTiles} />
-
-            <Button title="TEST" onPress={() => navigation.navigate("Profile")} />
+            <RenderMenu menus={menuTiles} navigation={navigation} />
         </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
+    scroll_view: {
+        paddingHorizontal: 10,
+    },
     header: {
         flex: 1,
         flexDirection: "row",
