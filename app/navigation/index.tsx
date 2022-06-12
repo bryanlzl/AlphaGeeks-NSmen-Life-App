@@ -7,7 +7,11 @@ import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
 import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
@@ -92,21 +96,21 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
-    return (
-        <BottomTab.Navigator
-            initialRouteName="Profile"
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme].tint,
-            }}
-        >
-            <BottomTab.Screen
-                name="Home"
-                component={HomeScreen}
-                options={{
-                    title: "Home",
-                    tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
-                }}
-            />
+  return (
+    <BottomTab.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}
+    >
+      <BottomTab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
+        }}
+      />
 
       <BottomTab.Screen
         name="Alerts"
@@ -117,23 +121,15 @@ function BottomTabNavigator() {
         }}
       />
 
-            <BottomTab.Screen
-                name="Profile"
-                component={ProfileScreen}
-                options={({ navigation }: RootTabScreenProps<"Profile">) => ({
-                    title: "Profile",
-                    tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
-                })}
-            />
-        </BottomTab.Navigator>
-    );
       <BottomTab.Screen
-        name="Logout"
-        component={LogoutScreen}
-        options={{
-          title: "Logout",
-          tabBarIcon: ({ color }) => <TabBarIcon name="logout" color={color} />,
-        }}
+        name="Profile"
+        component={ProfileScreen}
+        options={({ navigation }: RootTabScreenProps<"Profile">) => ({
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <FAIcon name="user-circle-o" color={color} />
+          ),
+        })}
       />
     </BottomTab.Navigator>
   );
@@ -142,8 +138,13 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function MCIcon(props: { name: React.ComponentProps<typeof MaterialCommunityIcons>["name"]; color: string }) {
-    return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />;
+function MCIcon(props: {
+  name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
+  color: string;
+}) {
+  return (
+    <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />
+  );
 }
 
 function FAIcon(props: {
