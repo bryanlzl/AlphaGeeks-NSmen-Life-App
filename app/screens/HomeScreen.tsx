@@ -1,6 +1,6 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import { StyleSheet, Image, ScrollView, Button } from "react-native";
+import { StyleSheet, Image, ScrollView, Button, TouchableOpacity } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
 
@@ -12,19 +12,8 @@ interface Menu {
 
 interface RenderMenuProps {
     menus: Menu[];
+    navigation: RootTabScreenProps<"Profile">;
 }
-
-const RenderMenu = ({ menus }: RenderMenuProps) => {
-    return menus.map((m, index) => {
-        return (
-            <View style={styles.image_tile}>
-                <Text style={styles.menu_title} key={index}>
-                    {m.title}
-                </Text>
-            </View>
-        );
-    });
-};
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
     const menuTiles: Menu[] = [
@@ -32,6 +21,20 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
         { title: "Claims", image: "", href: "" },
         { title: "ORNS activities", image: "", href: "" },
     ];
+
+    const RenderMenu = ({ menus }: RenderMenuProps) => {
+        return menus.map((m, index) => {
+            return (
+                <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+                    <View style={styles.image_tile}>
+                        <Text style={styles.menu_title} key={index}>
+                            {m.title}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            );
+        });
+    };
 
     return (
         <ScrollView>
@@ -42,9 +45,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
                 <Image style={styles.image} source={nsLogo} />
             </View>
 
-            <RenderMenu menus={menuTiles} />
-
-            <Button title="TEST" onPress={() => navigation.navigate("Profile")} />
+            <RenderMenu menus={menuTiles} navigation={navigation} />
         </ScrollView>
     );
 }
