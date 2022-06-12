@@ -83,7 +83,10 @@ const SingpassLoginScreen = ({
                 {inputFields.map((el, index) => (
                   <View key={index} style={styles.input}>
                     <Image style={styles.icons} source={{ uri: el.uri }} />
-                    <TextInput placeholder={el.placeholder} />
+                    <TextInput
+                      style={{ width: "100%" }}
+                      placeholder={el.placeholder}
+                    />
                   </View>
                 ))}
               </View>
