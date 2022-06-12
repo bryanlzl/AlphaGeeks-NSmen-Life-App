@@ -20,7 +20,7 @@ import {
 
 import Colors from "../constants/Colors";
 import ModalScreen from "../screens/ModalScreen";
-import LogoutScreen from "../screens/LogoutScreen";
+import HomeScreen from "../screens/HomeScreen";
 import AlertsScreen from "../screens/AlertsScreen";
 import useColorScheme from "../hooks/useColorScheme";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -100,23 +100,21 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
-  return (
-    <BottomTab.Navigator
-      initialRouteName="Profile"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}
-    >
-      <BottomTab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={({ navigation }: RootTabScreenProps<"Profile">) => ({
-          title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <FAIcon name="user-circle-o" color={color} />
-          ),
-        })}
-      />
+    return (
+        <BottomTab.Navigator
+            initialRouteName="Profile"
+            screenOptions={{
+                tabBarActiveTintColor: Colors[colorScheme].tint,
+            }}
+        >
+            <BottomTab.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    title: "Home",
+                    tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
+                }}
+            />
 
       <BottomTab.Screen
         name="Alerts"
@@ -127,6 +125,16 @@ function BottomTabNavigator() {
         }}
       />
 
+            <BottomTab.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={({ navigation }: RootTabScreenProps<"Profile">) => ({
+                    title: "Profile",
+                    tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
+                })}
+            />
+        </BottomTab.Navigator>
+    );
       <BottomTab.Screen
         name="Logout"
         component={LogoutScreen}

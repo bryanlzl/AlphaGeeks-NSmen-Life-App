@@ -14,6 +14,27 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Welcome: {
         screens: {
+            Root: {
+                screens: {
+                    Home: {
+                        screens: {
+                            HomeScreen: "home",
+                        },
+                    },
+                    Alerts: {
+                        screens: {
+                            AlertsScreen: "alerts",
+                        },
+                    },
+                    Profile: {
+                        screens: {
+                            ProfileScreen: "profile",
+                        },
+                    },
+                },
+            },
+            Modal: "modal",
+            NotFound: "*",
           WelcomeScreen: "welcome",
         },
       },
