@@ -5,9 +5,11 @@
  **************************************************************************/
 
 import React from "react";
-import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { ViewProps } from "@aws-amplify/ui-react";
-export declare type IPPTNSFitBookingmodalProps = React.PropsWithChildren<Partial<ViewProps> & {
-    overrides?: EscapeHatchProps | undefined | null;
-}>;
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type IPPTNSFitBookingmodalProps = React.PropsWithChildren<
+    Partial<ViewProps> & {
+        overrides?: EscapeHatchProps | undefined | null;
+    }
+>;
 export default function IPPTNSFitBookingmodal(props: IPPTNSFitBookingmodalProps): React.ReactElement;
