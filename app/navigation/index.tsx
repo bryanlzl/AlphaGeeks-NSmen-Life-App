@@ -100,21 +100,21 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
-    return (
-        <BottomTab.Navigator
-            initialRouteName="Profile"
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme].tint,
-            }}
-        >
-            <BottomTab.Screen
-                name="Home"
-                component={HomeScreen}
-                options={{
-                    title: "Home",
-                    tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
-                }}
-            />
+  return (
+    <BottomTab.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}
+    >
+      <BottomTab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
+        }}
+      />
 
       <BottomTab.Screen
         name="Alerts"
@@ -125,23 +125,15 @@ function BottomTabNavigator() {
         }}
       />
 
-            <BottomTab.Screen
-                name="Profile"
-                component={ProfileScreen}
-                options={({ navigation }: RootTabScreenProps<"Profile">) => ({
-                    title: "Profile",
-                    tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
-                })}
-            />
-        </BottomTab.Navigator>
-    );
       <BottomTab.Screen
-        name="Logout"
-        component={LogoutScreen}
-        options={{
-          title: "Logout",
-          tabBarIcon: ({ color }) => <TabBarIcon name="logout" color={color} />,
-        }}
+        name="Profile"
+        component={ProfileScreen}
+        options={({ navigation }: RootTabScreenProps<"Profile">) => ({
+          title: "Profile",
+          tabBarIcon: ({ color }) => (
+            <FAIcon name="user-circle-o" color={color} />
+          ),
+        })}
       />
     </BottomTab.Navigator>
   );
