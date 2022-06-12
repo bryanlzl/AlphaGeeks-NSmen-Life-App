@@ -32,7 +32,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 export type RootTabParamList = {
   Profile: undefined;
   Alerts: undefined;
-  Logout: undefined;
+  Home: undefined;
   Welcome: undefined;
   SingpassLogin: undefined;
   UserIDLogin: undefined;

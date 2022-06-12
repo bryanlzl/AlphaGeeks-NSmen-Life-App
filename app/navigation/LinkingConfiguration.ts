@@ -12,32 +12,34 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
+      Root: {
+        screens: {
+          Home: {
+            screens: {
+              HomeScreen: "home",
+            },
+          },
+          Alerts: {
+            screens: {
+              AlertsScreen: "alerts",
+            },
+          },
+          Profile: {
+            screens: {
+              ProfileScreen: "profile",
+            },
+          },
+        },
+      },
+      Modal: "modal",
+      NotFound: "*",
+
       Welcome: {
         screens: {
-            Root: {
-                screens: {
-                    Home: {
-                        screens: {
-                            HomeScreen: "home",
-                        },
-                    },
-                    Alerts: {
-                        screens: {
-                            AlertsScreen: "alerts",
-                        },
-                    },
-                    Profile: {
-                        screens: {
-                            ProfileScreen: "profile",
-                        },
-                    },
-                },
-            },
-            Modal: "modal",
-            NotFound: "*",
           WelcomeScreen: "welcome",
         },
       },
+
       SingpassLogin: {
         screens: {
           SingpassLoginScreen: "singpassLogin",
@@ -48,27 +50,6 @@ const linking: LinkingOptions<RootStackParamList> = {
           UserIDLoginScreen: "userIDLogin",
         },
       },
-      Root: {
-        screens: {
-          Profile: {
-            screens: {
-              ProfileScreen: "profile",
-            },
-          },
-          Alerts: {
-            screens: {
-              AlertsScreen: "alerts",
-            },
-          },
-          Logout: {
-            screens: {
-              LogoutScreen: "logout",
-            },
-          },
-        },
-      },
-      Modal: "modal",
-      NotFound: "*",
     },
   },
 };

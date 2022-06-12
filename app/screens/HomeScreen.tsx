@@ -27,13 +27,16 @@ export default function HomeScreen({
   const menuTiles: Menu[] = [
     { title: "IPPT / NS Fit", image: "", href: "" },
     { title: "Claims", image: "", href: "" },
-    { title: "ORNS activities", image: "", href: "" },
+    { title: "ORNS activities", image: "", href: "ORNS" },
   ];
 
   const RenderMenu = ({ menus }: RenderMenuProps) => {
     return menus.map((m, index) => {
       return (
-        <TouchableOpacity onPress={() => navigation.navigate(m.href)}>
+        <TouchableOpacity
+          key={index}
+          onPress={() => navigation.navigate(m.href)}
+        >
           <View style={styles.image_tile}>
             <Text style={styles.menu_title} key={index}>
               {m.title}

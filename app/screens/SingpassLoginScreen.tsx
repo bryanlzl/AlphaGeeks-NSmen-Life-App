@@ -92,7 +92,7 @@ const SingpassLoginScreen = ({
 
             <Pressable
               onPress={() => {
-                navigation.navigate("Profile");
+                navigation.navigate("Root");
               }}
               style={{
                 margin: 40,
