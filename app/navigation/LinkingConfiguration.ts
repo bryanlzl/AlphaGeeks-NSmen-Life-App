@@ -14,9 +14,9 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
             Root: {
                 screens: {
-                    Profile: {
+                    Home: {
                         screens: {
-                            ProfileScreen: "profile",
+                            HomeScreen: "home",
                         },
                     },
                     Alerts: {
@@ -24,9 +24,9 @@ const linking: LinkingOptions<RootStackParamList> = {
                             AlertsScreen: "alerts",
                         },
                     },
-                    Logout: {
+                    Profile: {
                         screens: {
-                            LogoutScreen: "logout",
+                            ProfileScreen: "profile",
                         },
                     },
                 },

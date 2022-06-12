@@ -12,7 +12,7 @@ import { MaterialIcons, MaterialCommunityIcons, FontAwesome } from "@expo/vector
 
 import Colors from "../constants/Colors";
 import ModalScreen from "../screens/ModalScreen";
-import LogoutScreen from "../screens/LogoutScreen";
+import HomeScreen from "../screens/HomeScreen";
 import AlertsScreen from "../screens/AlertsScreen";
 import useColorScheme from "../hooks/useColorScheme";
 import ProfileScreen from "../screens/ProfileScreen";
@@ -63,12 +63,12 @@ function BottomTabNavigator() {
             }}
         >
             <BottomTab.Screen
-                name="Profile"
-                component={ProfileScreen}
-                options={({ navigation }: RootTabScreenProps<"Profile">) => ({
-                    title: "Profile",
-                    tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
-                })}
+                name="Home"
+                component={HomeScreen}
+                options={{
+                    title: "Home",
+                    tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
+                }}
             />
 
             <BottomTab.Screen
@@ -81,12 +81,12 @@ function BottomTabNavigator() {
             />
 
             <BottomTab.Screen
-                name="Logout"
-                component={LogoutScreen}
-                options={{
-                    title: "Logout",
-                    tabBarIcon: ({ color }) => <TabBarIcon name="logout" color={color} />,
-                }}
+                name="Profile"
+                component={ProfileScreen}
+                options={({ navigation }: RootTabScreenProps<"Profile">) => ({
+                    title: "Profile",
+                    tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
+                })}
             />
         </BottomTab.Navigator>
     );
