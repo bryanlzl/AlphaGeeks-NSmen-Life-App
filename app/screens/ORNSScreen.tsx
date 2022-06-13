@@ -208,11 +208,12 @@ const Card = ({ info, rotate }: CardProps) => {
       </View>
       {info.event.length ? (
         <View
+          elevation={rotate ? 2 : 0}
           style={{
             width: "100%",
             backgroundColor: "transparent",
             alignSelf: "flex-start",
-            borderWidth: rotate ? 1 : 0,
+            shadowColor: "#000000",
             borderBottomLeftRadius: 15,
             borderBottomRightRadius: 15,
             paddingBottom: 10,
@@ -271,7 +272,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
     },
   ];
 
-  const [select, setSelected] = useState(0);
+  const [select, setSelected] = useState(-1);
 
   const totalEvent = cards
     .map((card) => card.event.length)
