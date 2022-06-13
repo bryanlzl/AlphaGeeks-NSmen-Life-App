@@ -29,7 +29,7 @@ import {
 } from "../types";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SingpassLoginScreen from "../screens/SingpassLoginScreen";
-import UserIDLoginScreen from "../screens/UserIDLoginScreen";
+import ORNSScreen from "../screens/ORNSScreen";
 
 export default function Navigation({
   colorScheme,
@@ -65,9 +65,10 @@ function RootNavigator() {
         component={SingpassLoginScreen}
         options={{ headerShown: false }}
       />
+
       <Stack.Screen
-        name="UserIDLogin"
-        component={UserIDLoginScreen}
+        name="ORNS"
+        component={ORNSScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen

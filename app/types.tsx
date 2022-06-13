@@ -22,7 +22,6 @@ export type RootStackParamList = {
   NotFound: undefined;
   Welcome: undefined;
   SingpassLogin: undefined;
-  UserIDLogin: undefined;
   ORNS: undefined;
 };
 
@@ -35,7 +34,6 @@ export type RootTabParamList = {
   Home: undefined;
   Welcome: undefined;
   SingpassLogin: undefined;
-  UserIDLogin: undefined;
   ORNS: undefined;
 };
 

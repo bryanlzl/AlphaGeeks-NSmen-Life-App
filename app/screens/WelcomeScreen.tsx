@@ -16,11 +16,6 @@ export default function WelcomeScreen({
       uri: "https://i.imgur.com/WtJ9tk3.png",
       route: "SingpassLogin",
     },
-    {
-      title: "User Id",
-      uri: "https://i.imgur.com/Xh4gWPY.png",
-      route: "UserIDLogin",
-    },
   ];
 
   return (
