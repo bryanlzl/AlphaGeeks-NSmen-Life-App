@@ -37,6 +37,7 @@ const CheckBoxTwo = () => {
           </Text>
         )}
       </View>
+      <Text style={{ color: "black", marginLeft: 5 }}>Remember me?</Text>
     </Pressable>
   );
 };
