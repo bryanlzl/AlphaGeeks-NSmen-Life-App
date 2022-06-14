@@ -1,8 +1,11 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import { StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, ScrollView, TouchableOpacity, ImageBackground } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
+import ippt_image from "../assets/images/ippt.png";
+import orns_image from "../assets/images/orns.png";
+import claims_image from "../assets/images/claims.png";
 
 interface Menu {
   title: String;
@@ -16,22 +19,23 @@ interface RenderMenuProps {
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const menuTiles: Menu[] = [
-    { title: "IPPT / NS Fit", image: "", href: "IpptHomeScreen" },
-    { title: "Claims", image: "", href: "ClaimsPayment" },
-    { title: "ORNS activities", image: "", href: "ORNS" },
+    { title: "IPPT / NS Fit", image: ippt_image, href: "IpptHomeScreen" },
+    { title: "Claims", image: claims_image, href: "ClaimsPayment" },
+    { title: "ORNS activities", image: orns_image, href: "ORNS" },
   ];
 
   const RenderMenu = ({ menus }: RenderMenuProps) => {
     return (
       <>
         {menus.map((m, index) => {
+          const { image } = m;
           return (
-            <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
-              <View style={styles.image_tile}>
+            <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)} style={styles.image_container}>
+              <ImageBackground source={image} style={styles.image_bg}>
                 <Text style={styles.menu_title} key={index}>
                   {m.title}
                 </Text>
-              </View>
+              </ImageBackground>
             </TouchableOpacity>
           );
         })}
@@ -54,6 +58,10 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
 }
 
 const styles = StyleSheet.create({
+  image_container: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+  },
   header: {
     flex: 1,
     flexDirection: "row",
@@ -65,6 +73,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FDE5E5",
     marginBottom: 20,
   },
+  image_bg: {
+    borderRadius: 15,
+    width: "100%",
+    height: 220,
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "space-between",
+  },
   image: {
     width: 50,
     height: 50,
@@ -75,8 +91,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   image_tile: {
-    borderWidth: 1,
-    height: 200,
     marginBottom: 20,
     borderColor: "white",
   },
