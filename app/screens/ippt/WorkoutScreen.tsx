@@ -3,6 +3,7 @@ import { RootTabScreenProps } from "../../types";
 import { Text, View } from "../../components/Themed";
 import DropDownPicker from "react-native-dropdown-picker";
 import { StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from "react-native";
+import map from "../../assets/images/map.png";
 
 export default function WorkoutScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const [open, setOpen] = useState(false);
@@ -56,6 +57,12 @@ export default function WorkoutScreen({ navigation }: RootTabScreenProps<"Profil
 
         <TouchableOpacity style={{ backgroundColor: "gray", marginTop: 25 }}>
           <Text style={{ textAlign: "center", paddingVertical: 15, color: "white", fontSize: 20 }}>Filter</Text>
+        </TouchableOpacity>
+
+        <Text style={{ marginTop: 25, fontSize: 25, fontWeight: "bold" }}>Workout groups near you</Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate("GroupsFound")}>
+          <Image source={map} style={{ width: 395, height: 250 }} />
         </TouchableOpacity>
       </>
     );
