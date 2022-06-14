@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Pressable, Image, TouchableOpacity } from "react-native";
+import { View, Text, Pressable, Image, TouchableOpacity, TextInput } from "react-native";
 import CalendarComponent from "../CalendarComponent";
 
 export default function Training({ nextPage }) {
@@ -53,6 +53,8 @@ export default function Training({ nextPage }) {
     setTrainingDetails(temp);
   };
 
+  const [warning, setWarning] = useState(false);
+
   return (
     <View
       elevation={2}
@@ -73,7 +75,6 @@ export default function Training({ nextPage }) {
         Training Details
       </Text>
       <Text style={{ fontSize: 11 }}>Select/add up to 5 training periods that you would like to claim for</Text>
-
       {trainingDetails.map((details, index) => (
         <View
           key={index}
@@ -108,17 +109,49 @@ export default function Training({ nextPage }) {
           </TouchableOpacity>
         </View>
       ))}
-
       <View style={{ width: "100%", paddingHorizontal: 20, paddingTop: 10, display: "flex", justifyContent: "center" }}>
         <View style={{ margin: 2, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-          <View style={{ margin: 2, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ margin: 2, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
             <Text>Training Start Date:</Text>
-            <Text>Calendar</Text>
-            {/* <CalendarComponent /> */}
+            <View
+              style={{
+                borderWidth: 1,
+                paddingHorizontal: 10,
+                borderRadius: 5,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "50%",
+              }}
+            >
+              <TextInput style={{ width: "100%", height: 30, padding: 5 }} />
+              <Image
+                style={{ width: 10, height: 10, marginHorizontal: 10, position: "absolute", right: 0 }}
+                source={{ uri: "https://i.imgur.com/QAn8q92.png" }}
+              />
+            </View>
           </View>
-          <View style={{ margin: 2, display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+          <View style={{ margin: 2, display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
             <Text>Training End Date:</Text>
-            <Text>Calendar</Text>
+            <View
+              style={{
+                borderWidth: 1,
+                paddingHorizontal: 10,
+                borderRadius: 5,
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "50%",
+              }}
+            >
+              <TextInput style={{ width: "100%", height: 30, padding: 5 }} />
+              <Image
+                style={{ width: 10, height: 10, marginHorizontal: 10, position: "absolute", right: 0 }}
+                source={{ uri: "https://i.imgur.com/QAn8q92.png" }}
+              />
+            </View>
           </View>
         </View>
 
@@ -133,12 +166,20 @@ export default function Training({ nextPage }) {
         <View style={{ display: "flex", alignItems: "flex-end", paddingTop: 20 }}>
           <TouchableOpacity
             style={{ backgroundColor: "#60AB83", width: 133, height: 35, borderRadius: 10 }}
-            onPress={() => (isPassable() ? nextPage() : "")}
+            onPress={() => {
+              if (isPassable()) {
+                setWarning(false);
+                nextPage();
+              } else {
+                setWarning(true);
+              }
+            }}
           >
             <Text style={{ width: "100%", height: "100%", textAlign: "center", textAlignVertical: "center", fontSize: 15, color: "white" }}>
               Save & Continue
             </Text>
           </TouchableOpacity>
+          {warning && <Text style={{ fontSize: 10, color: "red", paddingHorizontal: 10 }}>Please check all checkbox</Text>}
         </View>
       </View>
     </View>
