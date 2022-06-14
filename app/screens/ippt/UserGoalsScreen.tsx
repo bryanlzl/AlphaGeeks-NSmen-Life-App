@@ -1,6 +1,6 @@
 import { RootStackScreenProps } from "../../types";
 import { Text, View } from "../../components/Themed";
-import { ScrollView, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 export default function UserGoalsScreen({ navigation }: RootStackScreenProps<"UserGoalsScreen">) {
   return (
