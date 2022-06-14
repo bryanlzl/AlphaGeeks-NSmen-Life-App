@@ -44,7 +44,7 @@ function RootNavigator() {
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ORNS" component={ORNSScreen} />
-      <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} />
+      <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
 

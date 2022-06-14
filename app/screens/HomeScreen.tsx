@@ -1,6 +1,6 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import { StyleSheet, Image, ScrollView, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
 
@@ -16,7 +16,7 @@ interface RenderMenuProps {
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const menuTiles: Menu[] = [
-    { title: "IPPT / NS Fit", image: "", href: "ORNS" },
+    { title: "IPPT / NS Fit", image: "", href: "IpptHomeScreen" },
     { title: "Claims", image: "", href: "ORNS" },
     { title: "ORNS activities", image: "", href: "ORNS" },
   ];
