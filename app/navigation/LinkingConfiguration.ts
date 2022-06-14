@@ -9,51 +9,48 @@ import { RootStackParamList } from "../types";
 import { LinkingOptions } from "@react-navigation/native";
 
 const linking: LinkingOptions<RootStackParamList> = {
-    prefixes: [Linking.makeUrl("/")],
-    config: {
+  prefixes: [Linking.makeUrl("/")],
+  config: {
+    screens: {
+      Root: {
         screens: {
-            Welcome: {
-                screens: {
-                    WelcomeScreen: "welcome",
-                },
+          Home: {
+            screens: {
+              HomeScreen: "home",
             },
-            SingpassLogin: {
-                screens: {
-                    SingpassLoginScreen: "singpassLogin",
-                },
+          },
+          Alerts: {
+            screens: {
+              AlertsScreen: "alerts",
             },
-            UserIDLogin: {
-                screens: {
-                    UserIDLoginScreen: "userIDLogin",
-                },
+          },
+          Profile: {
+            screens: {
+              ProfileScreen: "profile",
             },
-            IpptFit: {
-                screens: {
-                    IpptFitScreen: "ipptFit",
-                },
-            },
-            Root: {
-                screens: {
-                    Profile: {
-                        screens: {
-                            ProfileScreen: "profile",
-                        },
-                    },
-                    Alerts: {
-                        screens: {
-                            AlertsScreen: "alerts",
-                        },
-                    },
-                    Logout: {
-                        screens: {
-                            LogoutScreen: "logout",
-                        },
-                    },
-                },
-            },
-            Modal: "modal",
-            NotFound: "*",
+          },
         },
+      },
+      Modal: "modal",
+      NotFound: "*",
+
+      Welcome: {
+        screens: {
+          WelcomeScreen: "welcome",
+        },
+      },
+
+      ORNS: {
+        screens: {
+          ORNSScreen: "orns",
+        },
+      },
+
+      SingpassLogin: {
+        screens: {
+          SingpassLoginScreen: "singpassLogin",
+        },
+      },
     },
 };
 

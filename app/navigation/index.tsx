@@ -23,6 +23,7 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import SingpassLoginScreen from "../screens/SingpassLoginScreen";
 import UserIDLoginScreen from "../screens/UserIDLoginScreen";
 import IpptFitScreen from "../screens/ippt/IpptFitScreen";
+import ORNSScreen from "../screens/ORNSScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
     return (
@@ -39,6 +40,39 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Welcome"
+        component={WelcomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SingpassLogin"
+        component={SingpassLoginScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ORNS"
+        component={ORNSScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: "Oops!" }}
+      />
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
+        <Stack.Screen name="Modal" component={ModalScreen} />
+      </Stack.Group>
+    </Stack.Navigator>
+  );
     return (
         <Stack.Navigator>
             <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
@@ -63,21 +97,21 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
 
-    return (
-        <BottomTab.Navigator
-            initialRouteName="Profile"
-            screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme].tint,
-            }}
-        >
-            <BottomTab.Screen
-                name="Home"
-                component={HomeScreen}
-                options={{
-                    title: "Home",
-                    tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
-                }}
-            />
+  return (
+    <BottomTab.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme].tint,
+      }}
+    >
+      <BottomTab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
+        }}
+      />
 
             <BottomTab.Screen
                 name="Alerts"
