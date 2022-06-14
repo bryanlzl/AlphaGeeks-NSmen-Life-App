@@ -30,6 +30,7 @@ export type RootStackParamList = {
   IpptBookingScreen: undefined;
   GroupsFound: undefined;
   GroupDetails: undefined;
+  TimeSlot: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Screen>;

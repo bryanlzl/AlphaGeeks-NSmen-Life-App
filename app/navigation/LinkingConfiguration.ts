@@ -68,6 +68,12 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
 
+      TimeSlot: {
+        screens: {
+          TimeSlotScreen: "timeslot",
+        },
+      },
+
       Claim: {
         screens: {
           ClaimsPaymentScreen: "claimsPayment",

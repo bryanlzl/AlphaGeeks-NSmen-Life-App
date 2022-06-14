@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View } from "../../components/Themed";
 import { RootStackScreenProps } from "../../types";
-import DropDownPicker from "react-native-dropdown-picker";
-import { StyleSheet, ScrollView, Text, Modal, Pressable, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, Text, Modal, Pressable, TouchableOpacity, ImageBackground } from "react-native";
 import CalendarComponent from "../../components/CalendarComponents";
+import ippt_image from "../../assets/images/ippt.png";
+import { useIsFocused } from "@react-navigation/native";
 
 const BtnSelect = ({ title }) => {
   const [isSelect, setSelect] = useState(false);
@@ -28,70 +29,34 @@ const BtnSelect = ({ title }) => {
 };
 
 export default function IpptBookingScreen({ navigation }: RootStackScreenProps<"IpptBookingScreen">) {
-  const [modalVisible, setModalVisible] = useState(false);
   const [venue, setVenue] = useState("");
   const [activity, setActivity] = useState("");
+  const [bookingData, setBookingData] = useState([]);
+  const isFocused = useIsFocused();
 
-  const RenderModal = () => {
+  useEffect(() => {
+    fetch("https://1d03sd22y1.execute-api.ap-southeast-1.amazonaws.com/dev/api/booking", { method: "get" })
+      .then((res) => res.json())
+      .then((res) => setBookingData(res["data"]));
+  }, [isFocused]);
+
+  const RenderBookingData = () => {
     return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <Text style={styles.modalText}>{`${activity} @ ${venue}`}</Text>
-          <Text style={{ fontSize: 20 }}>Select your timeslot</Text>
-
-          <View style={{ flex: 1, flexDirection: "row", marginTop: 25 }}>
-            <BtnSelect title="0830" />
-            <BtnSelect title="1030" />
-          </View>
-
-          <View style={{ flex: 1, flexDirection: "row", marginTop: 25 }}>
-            <BtnSelect title="1230" />
-            <BtnSelect title="1430" />
-          </View>
-
-          <View style={{ flex: 1, flexDirection: "row", marginTop: 25 }}>
-            <BtnSelect title="1630" />
-            <BtnSelect title="1830" />
-          </View>
-
-          <View style={{ marginBottom: 25 }}>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                fetch("https://1d03sd22y1.execute-api.ap-southeast-1.amazonaws.com/dev/api/booking", {
-                  method: "post",
-                  headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    userId: "123",
-                    date: "10-06-2022",
-                    time: "0830",
-                    location: "Khatib @ FCC",
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((res) => console.log(res));
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <Text style={styles.textStyle}>Confirm</Text>
-            </Pressable>
-
-            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+      <>
+        {bookingData.map((bkd, index) => {
+          if (bkd["userId"] !== "1") {
+            return (
+              <View key={index}>
+                <ImageBackground source={ippt_image} style={{ paddingVertical: 20, paddingHorizontal: 20, marginVertical: 10 }}>
+                  <Text>{`#${index}  NS Fit Session`}</Text>
+                  <Text>{bkd["location"]}</Text>
+                  <Text>{bkd["date"]}</Text>
+                </ImageBackground>
+              </View>
+            );
+          }
+        })}
+      </>
     );
   };
 
@@ -141,25 +106,15 @@ export default function IpptBookingScreen({ navigation }: RootStackScreenProps<"
       </View>
 
       <CalendarComponent />
-      <RenderModal />
 
-      <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
-
-      <Pressable
-        style={[styles.button, styles.buttonClose]}
-        onPress={() =>
-          fetch("https://1d03sd22y1.execute-api.ap-southeast-1.amazonaws.com/dev/api/booking", { method: "get" })
-            .then((res) => res.json())
-            .then((res) => console.log(res))
-        }
-      >
-        <Text style={styles.textStyle}>Hide Modal</Text>
+      <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => navigation.navigate("TimeSlot")}>
+        <Text style={styles.textStyle}>Set booking</Text>
       </Pressable>
 
       <View style={{ paddingHorizontal: 15 }}>
         <Text style={{ fontSize: 25, marginTop: 25 }}>Your Bookings: </Text>
+
+        <RenderBookingData />
       </View>
     </ScrollView>
   );

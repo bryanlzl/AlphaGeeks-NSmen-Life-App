@@ -30,6 +30,7 @@ import SubmitClaimsScreen from "../screens/claims/SubmitClaimsScreen";
 import IpptBookingScreen from "../screens/ippt/IpptBookScreen";
 import GroupsFoundPage from "../screens/ippt/GroupsFoundScreen";
 import GroupDetailsScreen from "../screens/ippt/GroupDetailsScreen";
+import TimeSlotScreen from "../screens/ippt/timeslotScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -61,6 +62,7 @@ function RootNavigator() {
       <Stack.Screen name="ClaimsPayment" component={ClaimScreen} />
       <Stack.Screen name="SubmitClaims" component={SubmitClaimsScreen} />
       <Stack.Screen name="IpptBookingScreen" component={IpptBookingScreen} options={{ title: "Book IPPT / NS Fit" }} />
+      <Stack.Screen name="TimeSlot" component={TimeSlotScreen} options={{ title: "Timeslot" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
