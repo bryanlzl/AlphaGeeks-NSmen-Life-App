@@ -1,12 +1,6 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import {
-  StyleSheet,
-  Image,
-  ScrollView,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Image, ScrollView, Button, TouchableOpacity } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
 
@@ -21,9 +15,7 @@ interface RenderMenuProps {
   navigation: RootTabScreenProps<"Profile">;
 }
 
-export default function HomeScreen({
-  navigation,
-}: RootTabScreenProps<"Profile">) {
+export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const menuTiles: Menu[] = [
     { title: "IPPT / NS Fit", image: "", href: "ORNS" },
     { title: "Claims", image: "", href: "ORNS" },
@@ -33,10 +25,7 @@ export default function HomeScreen({
   const RenderMenu = ({ menus }: RenderMenuProps) => {
     return menus.map((m, index) => {
       return (
-        <TouchableOpacity
-          key={index}
-          onPress={() => navigation.navigate(m.href)}
-        >
+        <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
           <View style={styles.image_tile}>
             <Text style={styles.menu_title} key={index}>
               {m.title}
