@@ -3,7 +3,7 @@ import { RootStackScreenProps } from "../../types";
 import { Text, View } from "../../components/Themed";
 import { ScrollView, StyleSheet, TextInput, Image, TouchableOpacity } from "react-native";
 import stats from "../../assets/images/stats.png";
-import nsLogo from "../../assets/images/ns.png";
+import gymLogo from "../../assets/images/gym.png";
 
 export default function UserGoalsScreen({ navigation }: RootStackScreenProps<"UserGoalsScreen">) {
   const [text, onChangeText] = useState({ age: "", width: "", height: "" });
@@ -37,7 +37,7 @@ export default function UserGoalsScreen({ navigation }: RootStackScreenProps<"Us
               </View>
 
               <View style={styles.subtext}>
-                <Image style={styles.image} source={nsLogo} />
+                <Image style={styles.image} source={gymLogo} />
 
                 <View style={styles.subtext2}>
                   <Text style={{ textAlign: "right", fontSize: 25, fontWeight: "bold" }}>{days}</Text>
@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   image: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     marginVertical: 10,
   },
   subtext: {
