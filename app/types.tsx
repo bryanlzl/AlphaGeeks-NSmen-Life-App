@@ -24,6 +24,8 @@ export type RootStackParamList = {
   WorkoutScreen: undefined;
   SingpassLogin: undefined;
   IpptHomeScreen: undefined;
+  ClaimsPayment: undefined;
+  SubmitClaims: undefined;
   UserGoalsScreen: undefined;
 };
 

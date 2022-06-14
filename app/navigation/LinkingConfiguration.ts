@@ -68,6 +68,11 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
 
+      SubmitClaims: {
+        screens: {
+          SubmitClaimsScreen: "submitClaims",
+        },
+      },
       Modal: "modal",
       NotFound: "*",
     },
