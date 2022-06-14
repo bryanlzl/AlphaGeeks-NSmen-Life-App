@@ -58,7 +58,7 @@ const linking: LinkingOptions<RootStackParamList> = {
 
       Claim: {
         screens: {
-          ClaimScreen: "claim",
+          ClaimsPaymentScreen: "claimsPayment",
         },
       },
 

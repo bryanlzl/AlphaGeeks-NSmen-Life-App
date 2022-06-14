@@ -1,10 +1,27 @@
+import { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 interface Alerts {
-  totalEvent: number;
+  totalEventLen: number;
 }
 
-export default function Alert({ totalEvent }: Alerts) {
+type CardData = {
+  data: {
+    code: string;
+    reportingVenue: string;
+    callUpDocument: string;
+    start: string;
+    end: string;
+    attire: string;
+    acknowledgedCode: string;
+    notifiedOn: string;
+  };
+};
+
+export default function Alert({ data }: CardData[]) {
+  const [totalEvent, setTotalEvent] = useState(data.length);
+  const events = [...data];
+
   const event = {
     "Reporting Venue": "Nee Soon Camp (RED ZONE)",
     "Call-up Document": "SAF100.pdf",
@@ -32,48 +49,54 @@ export default function Alert({ totalEvent }: Alerts) {
         </View>
         {totalEvent ? (
           <View style={{ width: "100%", display: "flex", alignItems: "center" }}>
-            <View
-              style={{
-                height: 30,
-                width: 331,
-                backgroundColor: "#FFB5B5",
-                borderRadius: 20,
-                marginVertical: 10,
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  textAlign: "center",
-                }}
-              >
-                Call-Up: Annual ICT
-              </Text>
-            </View>
-            <View>
+            {events.map((event, index) => (
               <View
+                key={index}
                 style={{
                   backgroundColor: "transparent",
-                  display: "flex",
+                  display: totalEvent - 1 === index ? "flex" : "none",
                   alignItems: "center",
-                  paddingVertical: 10,
+                  width: "100%",
                 }}
               >
+                <View
+                  style={{
+                    backgroundColor: "#FFB5B5",
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    height: 30,
+                    marginVertical: 10,
+                    borderRadius: 20,
+                  }}
+                >
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      textAlignVertical: "center",
+                      height: "100%",
+                      width: "100%",
+                      fontSize: 20,
+                    }}
+                  >
+                    {event.code}
+                  </Text>
+                </View>
+
                 <Text style={{ fontWeight: "bold" }}>{`Reporting Venue`}</Text>
-                <Text>{event["Reporting Venue"]}</Text>
+                <Text>{`${event.reportingVenue}\n`}</Text>
 
                 <View
                   style={{
                     backgroundColor: "transparent",
-                    width: "100%",
-                    paddingVertical: 10,
-                    padding: 20,
+                    width: "80%",
+                    paddingHorizontal: 20,
                   }}
                 >
-                  <Text>{`Call-up Document: ${event["Call-up Document"]}`}</Text>
-                  <Text>{`Start: ${event["Start"]}`}</Text>
-                  <Text>{`End: ${event["End"]}`}</Text>
-                  <Text>{`Attire: ${event["Attire"]}`}</Text>
+                  <Text>{`Call-up Document: ${event.callUpDocument}`}</Text>
+                  <Text>{`Start: ${event.start}`}</Text>
+                  <Text>{`End: ${event.end}`}</Text>
+                  <Text>{`Attire: ${event.attire}\n`}</Text>
                 </View>
                 <TouchableOpacity
                   style={{
@@ -81,6 +104,12 @@ export default function Alert({ totalEvent }: Alerts) {
                     borderRadius: 20,
                     width: 168,
                     height: 38,
+                  }}
+                  onPress={() => {
+                    if (totalEvent > 0) {
+                      console.log(totalEvent);
+                      setTotalEvent(totalEvent - 1);
+                    }
                   }}
                 >
                   <Text
@@ -96,9 +125,9 @@ export default function Alert({ totalEvent }: Alerts) {
                     Acknowledge
                   </Text>
                 </TouchableOpacity>
-                <Text style={{ fontSize: 10, margin: 10 }}>{`Notified On: ${event["Notified On"]}`}</Text>
+                <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event.notifiedOn}`}</Text>
               </View>
-            </View>
+            ))}
           </View>
         ) : (
           <View />

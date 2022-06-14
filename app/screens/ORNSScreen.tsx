@@ -6,13 +6,13 @@ import Alert from "../components/orns/Alerts";
 
 type CardData = {
   code: string;
-  "Reporting Venue": string;
-  "Call-up Document": string;
-  Start: string;
-  End: string;
-  Attire: string;
-  "Acknowledged Code": string;
-  "Notified On": string;
+  reportingVenue: string;
+  callUpDocument: string;
+  start: string;
+  end: string;
+  attire: string;
+  acknowledgedCode: string;
+  notifiedOn: string;
 };
 
 interface CardProps {
@@ -34,7 +34,7 @@ const Card = ({ info, rotate }: CardProps) => {
           overflow: "hidden",
         }}
       >
-        {data.map((event, index) => (
+        {data.map((event: any, index: any) => (
           <View
             key={index}
             style={{
@@ -61,12 +61,12 @@ const Card = ({ info, rotate }: CardProps) => {
                   width: "100%",
                 }}
               >
-                {event["code"]}
+                {event.code}
               </Text>
             </View>
 
             <Text style={{ fontWeight: "bold" }}>{`Reporting Venue`}</Text>
-            <Text>{`${event["Reporting Venue"]}\n`}</Text>
+            <Text>{`${event.reportingVenue}\n`}</Text>
 
             <View
               style={{
@@ -75,13 +75,13 @@ const Card = ({ info, rotate }: CardProps) => {
                 paddingHorizontal: 20,
               }}
             >
-              <Text>{`Call-up Document: ${event["Call-up Document"]}`}</Text>
-              <Text>{`Start: ${event["Start"]}`}</Text>
-              <Text>{`End: ${event["End"]}`}</Text>
-              <Text>{`Attire: ${event["Attire"]}`}</Text>
-              <Text>{`Acknowledged Code: ${event["Acknowledged Code"]}`}</Text>
+              <Text>{`Call-up Document: ${event.callUpDocument}`}</Text>
+              <Text>{`Start: ${event.start}`}</Text>
+              <Text>{`End: ${event.end}`}</Text>
+              <Text>{`Attire: ${event.attire}`}</Text>
+              <Text>{`Acknowledged Code: ${event.acknowledgedCode}`}</Text>
             </View>
-            <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event["Notified On"]}`}</Text>
+            <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event.notifiedOn}`}</Text>
           </View>
         ))}
       </View>
@@ -231,23 +231,23 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
       event: [
         {
           code: "ICT: High Key",
-          "Reporting Venue": "MANDAI HILL CAMP",
-          "Call-up Document": "-",
-          Start: "Mon, 01 Aug 2023, 0730 hrs",
-          End: "Sun, 14 Aug 2023, 2359 hrs",
-          Attire: "No 4 Dress",
-          "Acknowledged Code": "N201230005",
-          "Notified On": "21 July 2022",
+          reportingVenue: "MANDAI HILL CAMP",
+          callUpDocument: "-",
+          start: "Mon, 01 Aug 2023, 0730 hrs",
+          end: "Sun, 14 Aug 2023, 2359 hrs",
+          attire: "No 4 Dress",
+          acknowledgedCode: "N201230005",
+          notifiedOn: "21 July 2022",
         },
         {
           code: "ICT: Low Key",
-          "Reporting Venue": "TEKONG",
-          "Call-up Document": "-",
-          Start: "Mon, 01 Aug 2023, 0730 hrs",
-          End: "Sun, 14 Aug 2023, 2359 hrs",
-          Attire: "No 4 Dress",
-          "Acknowledged Code": "N201230005",
-          "Notified On": "21 July 2022",
+          reportingVenue: "TEKONG",
+          callUpDocument: "-",
+          start: "Mon, 01 Aug 2023, 0730 hrs",
+          end: "Sun, 14 Aug 2023, 2359 hrs",
+          attire: "No 4 Dress",
+          acknowledgedCode: "N201230005",
+          notifiedOn: "21 July 2022",
         },
       ],
     },
@@ -257,21 +257,20 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
       event: [
         {
           code: "Manning: Ops Manning",
-          "Reporting Venue": "KHATIB CAMP",
-          "Call-up Document": "-",
-          Start: "Mon, 01 Aug 2023, 0730 hrs",
-          End: "Sun, 14 Aug 2023, 2359 hrs",
-          Attire: "No 4 Dress",
-          "Acknowledged Code": "N201230005",
-          "Notified On": "21 July 2022",
+          reportingVenue: "KHATIB CAMP",
+          callUpDocument: "-",
+          start: "Mon, 01 Aug 2023, 0730 hrs",
+          end: "Sun, 14 Aug 2023, 2359 hrs",
+          attire: "No 4 Dress",
+          acknowledgedCode: "N201230005",
+          notifiedOn: "21 July 2022",
         },
       ],
     },
   ];
 
   const [select, setSelected] = useState(-1);
-
-  const totalEvent = cards.map((card) => card.event.length).reduce((x, y) => x + y);
+  const events = cards.map((card) => card.event).flat();
 
   return (
     <ScrollView style={{ backgroundColor: "#FFE9E9", height: "100%" }}>
@@ -288,7 +287,7 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
             <Card info={info} rotate={select === index} />
           </Pressable>
         ))}
-        <Alert totalEvent={totalEvent} />
+        <Alert data={events} />
       </View>
     </ScrollView>
   );
