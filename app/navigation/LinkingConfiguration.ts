@@ -37,21 +37,31 @@ const linking: LinkingOptions<RootStackParamList> = {
           WelcomeScreen: "welcome",
         },
       },
+
       SingpassLogin: {
         screens: {
           SingpassLoginScreen: "singpassLogin",
         },
       },
+
       ORNS: {
         screens: {
           ORNSSCreen: "orns",
         },
       },
+
+      UserGoalsScreen: {
+        screens: {
+          UserGoalsScreen: "usergoals",
+        },
+      },
+
       Claim: {
         screens: {
           ClaimScreen: "claim",
         },
       },
+
       Modal: "modal",
       NotFound: "*",
     },

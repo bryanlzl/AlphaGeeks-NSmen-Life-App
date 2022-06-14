@@ -5,18 +5,18 @@ import { ScrollView, StyleSheet, TouchableOpacity, Image } from "react-native";
 export default function IpptHomeScreen({ navigation }: RootStackScreenProps<"IpptHomeScreen">) {
   const RenderIpptTiles = () => {
     const data = [
-      { title: "Set Fitness Goals", description: "Go for Gold!", alerts: "2 active goals", image: "" },
-      { title: "Workout in a group", description: "Join an exercise group!", alerts: "4 groups near you", image: "" },
-      { title: "Book IPPT / NS Fit session", description: "Your window is closing!", alerts: "", image: "" },
+      { title: "Set Fitness Goals", description: "Go for Gold!", alerts: "2 active goals", image: "", href: "UserGoalsScreen" },
+      { title: "Workout in a group", description: "Join an exercise group!", alerts: "4 groups near you", image: "", href: "Profile" },
+      { title: "Book IPPT / NS Fit session", description: "Your window is closing!", alerts: "", image: "", href: "Profile" },
     ];
 
     return (
       <>
         {data.map((d, index) => {
-          const { title, description, alerts, image } = d;
+          const { title, description, alerts, image, href } = d;
 
           return (
-            <TouchableOpacity style={styles.ippt_tiles} key={index}>
+            <TouchableOpacity style={styles.ippt_tiles} key={index} onPress={() => navigation.navigate(href)}>
               <View>
                 <Text style={styles.ippt_tiles_title}>{title}</Text>
                 <Text style={styles.ippt_tiles_desc}>{description}</Text>

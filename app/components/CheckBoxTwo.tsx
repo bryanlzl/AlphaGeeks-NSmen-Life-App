@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pressable, Image } from "react-native";
 import { Text, View } from "./Themed";
 
-const CheckBox = () => {
+const CheckBoxTwo = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
@@ -33,17 +33,12 @@ const CheckBox = () => {
               color: "black",
             }}
           >
-            <Image
-              style={{ width: 20, height: 20 }}
-              source={{ uri: "https://i.imgur.com/kQgvKT7.png" }}
-            />
+            <Image style={{ width: 20, height: 20 }} source={{ uri: "https://i.imgur.com/kQgvKT7.png" }} />
           </Text>
         )}
       </View>
-
-      <Text style={{ marginLeft: 5, color: "black" }}>Remember me?</Text>
     </Pressable>
   );
 };
 
-export default CheckBox;
+export default CheckBoxTwo;

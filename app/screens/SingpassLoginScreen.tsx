@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, TextInput } from "react-native";
-import { RootStackScreenProps, RootTabScreenProps } from "../types";
+import { RootStackScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
 import { Image } from "react-native";
 import { useState } from "react";
-import CheckBox from "../components/CheckBox";
+import CheckBoxTwo from "../components/CheckBoxTwo";
 import LoginLayout from "../components/Layout/LoginLayout";
 
 const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin">) => {
@@ -86,7 +86,7 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
                   </View>
                 ))}
               </View>
-              <CheckBox />
+              <CheckBoxTwo />
             </View>
 
             <Pressable

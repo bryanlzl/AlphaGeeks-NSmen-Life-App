@@ -24,6 +24,7 @@ import SingpassLoginScreen from "../screens/SingpassLoginScreen";
 import ORNSScreen from "../screens/ORNSScreen";
 import IpptHomeScreen from "../screens/ippt/IpptHomeScreen";
 import ClaimScreen from "../screens/ClaimScreen";
+import UserGoalsScreen from "../screens/ippt/UserGoalsScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -41,15 +42,15 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName="SingpassLogin">
       <Stack.Screen name="ORNS" component={ORNSScreen} />
-      <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
       <Stack.Screen name="Claim" component={ClaimScreen} />
-      <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} />
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
+      <Stack.Screen name="UserGoalsScreen" component={UserGoalsScreen} options={{ title: "User Goals" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
