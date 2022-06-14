@@ -25,6 +25,7 @@ export type RootStackParamList = {
   SingpassLogin: undefined;
   IpptHomeScreen: undefined;
   UserGoalsScreen: undefined;
+  IpptBookingScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Screen>;

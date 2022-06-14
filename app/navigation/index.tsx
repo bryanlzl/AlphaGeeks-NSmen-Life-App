@@ -26,6 +26,7 @@ import IpptHomeScreen from "../screens/ippt/IpptHomeScreen";
 import ClaimScreen from "../screens/ClaimScreen";
 import UserGoalsScreen from "../screens/ippt/UserGoalsScreen";
 import WorkoutScreen from "../screens/ippt/WorkoutScreen";
+import IpptBookingScreen from "../screens/ippt/IpptBookScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -53,6 +54,7 @@ function RootNavigator() {
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
       <Stack.Screen name="WorkoutScreen" component={WorkoutScreen} options={{ title: "Join a workout group" }} />
+      <Stack.Screen name="IpptBookingScreen" component={IpptBookingScreen} options={{ title: "Book IPPT / NS Fit" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
