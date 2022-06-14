@@ -17,7 +17,7 @@ interface RenderMenuProps {
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
     const menuTiles: Menu[] = [
-        { title: "IPPT / NS Fit", image: "", href: "Profile" },
+        { title: "IPPT / NS Fit", image: "", href: "IpptFit" },
         { title: "Claims", image: "", href: "Profile" },
         { title: "ORNS activities", image: "", href: "Profile" },
     ];
@@ -25,7 +25,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
     const RenderMenu = ({ menus }: RenderMenuProps) => {
         return menus.map((m, index) => {
             return (
-                <TouchableOpacity onPress={() => navigation.navigate(m.href)}>
+                <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
                     <View style={styles.image_tile}>
                         <Text style={styles.menu_title} key={index}>
                             {m.title}

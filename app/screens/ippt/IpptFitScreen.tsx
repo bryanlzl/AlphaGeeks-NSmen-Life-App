@@ -3,6 +3,16 @@ import { RootTabScreenProps } from "../../types";
 import { Text, View } from "../../components/Themed";
 
 export default function IpptFitScreen({ navigation }: RootTabScreenProps<"Alerts">) {
+    const ipptOption = [
+        { title: "Set Fitness Goals", subtitle: "Go for Gold!", notification: "2 active goals", image: "" },
+        { title: "Workout in a group", subtitle: "Join an exercise group", notification: "4 groups near you", image: "" },
+        { title: "Book IPPT / NS Fit session", subtitle: "", notification: "Your window is closing!", image: "" },
+    ];
+
+    const RenderIPPTOption = () => {
+        return ipptOption.map((ippt) => {});
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Alerts</Text>
