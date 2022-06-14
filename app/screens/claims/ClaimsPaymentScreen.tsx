@@ -3,7 +3,17 @@ import { RootStackScreenProps } from "../../types";
 import { ImageBackground, StyleSheet, Text, Image, Pressable, LayoutAnimation, ScrollView, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
-  dropDown: { backgroundColor: "white", width: 119 },
+  dropDown: {
+    backgroundColor: "white",
+    width: 119,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+  },
+  chevron: { width: 26 / 2, height: 23 / 2, right: 0 },
   filter: {
     backgroundColor: "#D9D9D9",
     width: "100%",
@@ -22,8 +32,8 @@ const styles = StyleSheet.create({
 
 export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps<"ClaimsPayment">) {
   return (
-    <ScrollView style={{ backgroundColor: "#FFE9E9", height: "100%" }}>
-      <ScrollView style={{ backgroundColor: "#FFE9E9", height: "100%", width: "100%" }}>
+    <View style={{ backgroundColor: "#FFE9E9", height: "100%" }}>
+      <View style={{ backgroundColor: "#FFE9E9", height: "100%", width: "100%" }}>
         <View style={styles.container}>
           <TouchableOpacity
             style={{
@@ -33,6 +43,7 @@ export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps
               borderRadius: 20,
               marginVertical: 20,
             }}
+            onPress={() => navigation.navigate("SubmitClaims")}
           >
             <Text
               style={{
@@ -70,10 +81,12 @@ export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps
               >
                 <Text style={{ width: 45 }}>From:</Text>
                 <View style={styles.dropDown}>
-                  <Text style={{ textAlign: "center", textAlignVertical: "center" }}>YYYY</Text>
+                  <Text style={{ textAlign: "center", textAlignVertical: "center", width: "80%" }}>YYYY</Text>
+                  <Image style={styles.chevron} source={{ uri: "https://i.imgur.com/HcspvOp.png" }} />
                 </View>
                 <View style={styles.dropDown}>
-                  <Text style={{ textAlign: "center", textAlignVertical: "center" }}>MMMM</Text>
+                  <Text style={{ textAlign: "center", textAlignVertical: "center", width: "80%" }}>MMMM</Text>
+                  <Image style={styles.chevron} source={{ uri: "https://i.imgur.com/HcspvOp.png" }} />
                 </View>
               </View>
 
@@ -89,10 +102,12 @@ export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps
               >
                 <Text style={{ width: 45 }}>To:</Text>
                 <View style={styles.dropDown}>
-                  <Text style={{ textAlign: "center", textAlignVertical: "center" }}>YYYY</Text>
+                  <Text style={{ textAlign: "center", textAlignVertical: "center", width: "80%" }}>YYYY</Text>
+                  <Image style={styles.chevron} source={{ uri: "https://i.imgur.com/HcspvOp.png" }} />
                 </View>
                 <View style={styles.dropDown}>
-                  <Text style={{ textAlign: "center", textAlignVertical: "center" }}>MMMM</Text>
+                  <Text style={{ textAlign: "center", textAlignVertical: "center", width: "80%" }}>MMMM</Text>
+                  <Image style={styles.chevron} source={{ uri: "https://i.imgur.com/HcspvOp.png" }} />
                 </View>
               </View>
             </View>
@@ -114,7 +129,7 @@ export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps
                   textAlignVertical: "center",
                 }}
               >
-                Payments
+                Payment History
               </Text>
             </TouchableOpacity>
 
@@ -192,7 +207,7 @@ export default function ClaimsPaymentScreen({ navigation }: RootStackScreenProps
             </View>
           </View>
         </View>
-      </ScrollView>
-    </ScrollView>
+      </View>
+    </View>
   );
 }

@@ -22,10 +22,11 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from "../typ
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SingpassLoginScreen from "../screens/SingpassLoginScreen";
 import ORNSScreen from "../screens/ORNSScreen";
-import IpptHomeScreen from "../screens/ippt/IpptHomeScreen";
-import ClaimScreen from "../screens/ClaimScreen";
 import UserGoalsScreen from "../screens/ippt/UserGoalsScreen";
 import WorkoutScreen from "../screens/ippt/WorkoutScreen";
+import IpptHomeScreen from "../../app/screens/ippt/IpptHomeScreen";
+import ClaimScreen from "../../app/screens/claims/ClaimsPaymentScreen";
+import SubmitClaimsScreen from "../screens/claims/SubmitClaimsScreen";
 import IpptBookingScreen from "../screens/ippt/IpptBookScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -46,7 +47,6 @@ function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="SingpassLogin">
       <Stack.Screen name="ORNS" component={ORNSScreen} />
-      <Stack.Screen name="Claim" component={ClaimScreen} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -54,6 +54,8 @@ function RootNavigator() {
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
       <Stack.Screen name="WorkoutScreen" component={WorkoutScreen} options={{ title: "Join a workout group" }} />
+      <Stack.Screen name="ClaimsPayment" component={ClaimScreen} />
+      <Stack.Screen name="SubmitClaims" component={SubmitClaimsScreen} />
       <Stack.Screen name="IpptBookingScreen" component={IpptBookingScreen} options={{ title: "Book IPPT / NS Fit" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
