@@ -7,11 +7,13 @@ import {
   Image,
   Pressable,
   LayoutAnimation,
+  ScrollView,
 } from "react-native";
 import { useState } from "react";
 import Alert from "../components/orns/Alerts";
 
 type CardData = {
+  code: string;
   "Reporting Venue": string;
   "Call-up Document": string;
   Start: string;
@@ -20,16 +22,6 @@ type CardData = {
   "Acknowledged Code": string;
   "Notified On": string;
 };
-
-const keys = [
-  "Reporting Venue",
-  "Call-up Document",
-  "Start",
-  "End",
-  "Attire",
-  "Acknowledged Code",
-  "Notified On",
-];
 
 interface CardProps {
   info: { title: string; abbr: string; event: CardData[] };
@@ -44,9 +36,10 @@ const Card = ({ info, rotate }: CardProps) => {
           backgroundColor: "transparent",
           paddingTop: rotate ? 30 : 0,
           height: rotate ? undefined : 0,
-          padding: 10,
+          paddingVertical: 10,
           display: "flex",
           justifyContent: "space-between",
+          overflow: "hidden",
         }}
       >
         {data.map((event, index) => (
@@ -58,6 +51,28 @@ const Card = ({ info, rotate }: CardProps) => {
               alignItems: "center",
             }}
           >
+            <View
+              style={{
+                backgroundColor: "#FFB5B5",
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                height: 30,
+                marginVertical: 10,
+              }}
+            >
+              <Text
+                style={{
+                  textAlign: "center",
+                  textAlignVertical: "center",
+                  height: "100%",
+                  width: "100%",
+                }}
+              >
+                {event["code"]}
+              </Text>
+            </View>
+
             <Text style={{ fontWeight: "bold" }}>{`Reporting Venue`}</Text>
             <Text>{event["Reporting Venue"]}</Text>
 
@@ -77,18 +92,6 @@ const Card = ({ info, rotate }: CardProps) => {
             <Text
               style={{ fontSize: 10 }}
             >{`\nNotified On: ${event["Notified On"]}`}</Text>
-            <View
-              style={
-                index < data.length - 1 && data.length > 1
-                  ? {
-                      borderWidth: 1,
-                      borderColor: "grey",
-                      width: "90%",
-                      marginVertical: 20,
-                    }
-                  : {}
-              }
-            />
           </View>
         ))}
       </View>
@@ -170,7 +173,7 @@ const Card = ({ info, rotate }: CardProps) => {
                   <Text
                     style={{
                       borderRadius: 20,
-                      backgroundColor: "white",
+                      backgroundColor: "#FFFEFE",
                       width: 102,
                       height: 36,
                       textAlign: "center",
@@ -236,6 +239,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
       abbr: "ICT",
       event: [
         {
+          code: "ICT: High Key",
           "Reporting Venue": "To be confirmed upon activation",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
@@ -245,6 +249,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
           "Notified On": "21 July 2022",
         },
         {
+          code: "ICT: Low Key",
           "Reporting Venue": "To be confirmed upon activation",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
@@ -260,6 +265,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
       abbr: "",
       event: [
         {
+          code: "Manning: Ops Manning",
           "Reporting Venue": "To be confirmed upon activation",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
@@ -279,22 +285,25 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
     .reduce((x, y) => x + y);
 
   return (
-    <View style={styles.container}>
-      {cards.map((info, index) => (
-        <Pressable
-          style={{ width: "100%", display: "flex", alignItems: "center" }}
-          onPress={() => {
-            LayoutAnimation.configureNext(
-              LayoutAnimation.Presets.easeInEaseOut
-            );
-            index === select ? setSelected(-1) : setSelected(index);
-          }}
-        >
-          <Card key={index} info={info} rotate={select === index} />
-        </Pressable>
-      ))}
-      <Alert totalEvent={totalEvent} />
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        {cards.map((info, index) => (
+          <Pressable
+            key={index}
+            style={{ width: "100%", display: "flex", alignItems: "center" }}
+            onPress={() => {
+              LayoutAnimation.configureNext(
+                LayoutAnimation.Presets.easeInEaseOut
+              );
+              index === select ? setSelected(-1) : setSelected(index);
+            }}
+          >
+            <Card info={info} rotate={select === index} />
+          </Pressable>
+        ))}
+        <Alert totalEvent={totalEvent} />
+      </View>
+    </ScrollView>
   );
 }
 

@@ -1,6 +1,6 @@
 import { RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
-import { Image, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, ScrollView, Button } from "react-native";
 
 import nsLogo from "../assets/images/ns.png";
 
@@ -12,29 +12,26 @@ interface Menu {
 
 interface RenderMenuProps {
     menus: Menu[];
-    navigation: RootTabScreenProps<"Profile">;
 }
+
+const RenderMenu = ({ menus }: RenderMenuProps) => {
+    return menus.map((m, index) => {
+        return (
+            <View style={styles.image_tile}>
+                <Text style={styles.menu_title} key={index}>
+                    {m.title}
+                </Text>
+            </View>
+        );
+    });
+};
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
     const menuTiles: Menu[] = [
-        { title: "IPPT / NS Fit", image: "", href: "Profile" },
-        { title: "Claims", image: "", href: "Home" },
-        { title: "ORNS activities", image: "", href: "ORNS" },
+        { title: "IPPT / NS Fit", image: "", href: "" },
+        { title: "Claims", image: "", href: "" },
+        { title: "ORNS activities", image: "", href: "" },
     ];
-
-    const RenderMenu = ({ menus }: RenderMenuProps) => {
-        return menus.map((m, index) => {
-            return (
-                <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
-                    <View style={styles.image_tile}>
-                        <Text style={styles.menu_title} key={index}>
-                            {m.title}
-                        </Text>
-                    </View>
-                </TouchableOpacity>
-            );
-        });
-    };
 
     return (
         <ScrollView>
@@ -45,7 +42,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
                 <Image style={styles.image} source={nsLogo} />
             </View>
 
-            <RenderMenu menus={menuTiles} navigation={navigation} />
+            <RenderMenu menus={menuTiles} />
+
+            <Button title="TEST" onPress={() => navigation.navigate("Profile")} />
         </ScrollView>
     );
 }
