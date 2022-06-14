@@ -23,6 +23,7 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import SingpassLoginScreen from "../screens/SingpassLoginScreen";
 import ORNSScreen from "../screens/ORNSScreen";
 import IpptHomeScreen from "../screens/ippt/IpptHomeScreen";
+import ClaimScreen from "../screens/ClaimScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -44,6 +45,7 @@ function RootNavigator() {
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ORNS" component={ORNSScreen} />
+      <Stack.Screen name="Claim" component={ClaimScreen} />
       <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />

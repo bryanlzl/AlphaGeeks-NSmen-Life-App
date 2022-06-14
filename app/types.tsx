@@ -22,6 +22,7 @@ export type RootStackParamList = {
   ORNS: undefined;
   Home: undefined;
   IpptHomeScreen: undefined;
+  Claim: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Screen>;

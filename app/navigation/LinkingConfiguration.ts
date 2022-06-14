@@ -47,6 +47,11 @@ const linking: LinkingOptions<RootStackParamList> = {
           ORNSSCreen: "orns",
         },
       },
+      Claim: {
+        screens: {
+          ClaimScreen: "claim",
+        },
+      },
       Modal: "modal",
       NotFound: "*",
     },

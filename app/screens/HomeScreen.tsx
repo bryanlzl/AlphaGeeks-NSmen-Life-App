@@ -17,7 +17,7 @@ interface RenderMenuProps {
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const menuTiles: Menu[] = [
     { title: "IPPT / NS Fit", image: "", href: "ORNS" },
-    { title: "Claims", image: "", href: "ORNS" },
+    { title: "Claims", image: "", href: "Claim" },
     { title: "ORNS activities", image: "", href: "ORNS" },
   ];
 
