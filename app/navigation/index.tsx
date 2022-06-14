@@ -7,11 +7,7 @@ import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import {
-  NavigationContainer,
-  DefaultTheme,
-  DarkTheme,
-} from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
 
 import Colors from "../constants/Colors";
@@ -22,26 +18,14 @@ import useColorScheme from "../hooks/useColorScheme";
 import ProfileScreen from "../screens/ProfileScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import LinkingConfiguration from "./LinkingConfiguration";
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from "../types";
+import { RootStackParamList, RootTabParamList, RootTabScreenProps } from "../types";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SingpassLoginScreen from "../screens/SingpassLoginScreen";
-import UserIDLoginScreen from "../screens/UserIDLoginScreen";
 import ORNSScreen from "../screens/ORNSScreen";
 
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
+export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-    >
+    <NavigationContainer linking={LinkingConfiguration} theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <RootNavigator />
     </NavigationContainer>
   );
@@ -56,32 +40,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Welcome"
-        component={WelcomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SingpassLogin"
-        component={SingpassLoginScreen}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="ORNS" component={ORNSScreen} />
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: "Oops!" }}
-      />
-      <Stack.Screen
-        name="UserIDLogin"
-        component={UserIDLoginScreen}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -129,9 +92,7 @@ function BottomTabNavigator() {
         component={ProfileScreen}
         options={({ navigation }: RootTabScreenProps<"Profile">) => ({
           title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <FAIcon name="user-circle-o" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <FAIcon name="user-circle-o" color={color} />,
         })}
       />
     </BottomTab.Navigator>
@@ -141,18 +102,10 @@ function BottomTabNavigator() {
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function MCIcon(props: {
-  name: React.ComponentProps<typeof MaterialCommunityIcons>["name"];
-  color: string;
-}) {
-  return (
-    <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />
-  );
+function MCIcon(props: { name: React.ComponentProps<typeof MaterialCommunityIcons>["name"]; color: string }) {
+  return <MaterialCommunityIcons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
-function FAIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
+function FAIcon(props: { name: React.ComponentProps<typeof FontAwesome>["name"]; color: string }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }

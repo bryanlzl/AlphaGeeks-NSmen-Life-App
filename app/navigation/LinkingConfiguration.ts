@@ -43,11 +43,6 @@ const linking: LinkingOptions<RootStackParamList> = {
           SingpassLoginScreen: "singpassLogin",
         },
       },
-      UserIDLogin: {
-        screens: {
-          UserIDLoginScreen: "userIDLogin",
-        },
-      },
       ORNS: {
         screens: {
           ORNSSCreen: "orns",

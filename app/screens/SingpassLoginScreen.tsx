@@ -1,14 +1,12 @@
 import { Pressable, StyleSheet, TextInput } from "react-native";
-import { RootTabScreenProps } from "../types";
+import { RootStackScreenProps, RootTabScreenProps } from "../types";
 import { Text, View } from "../components/Themed";
 import { Image } from "react-native";
 import { useState } from "react";
 import CheckBox from "../components/CheckBox";
 import LoginLayout from "../components/Layout/LoginLayout";
 
-const SingpassLoginScreen = ({
-  navigation,
-}: RootTabScreenProps<"SingpassLogin">) => {
+const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin">) => {
   const [loginChoice, setLoginChoice] = useState(0);
   const loginOptions = ["QR Code", "Password"];
 
@@ -83,10 +81,7 @@ const SingpassLoginScreen = ({
                 {inputFields.map((el, index) => (
                   <View key={index} style={styles.input}>
                     <Image style={styles.icons} source={{ uri: el.uri }} />
-                    <TextInput
-                      style={{ width: "100%" }}
-                      placeholder={el.placeholder}
-                    />
+                    <TextInput style={{ width: "100%" }} placeholder={el.placeholder} />
                   </View>
                 ))}
               </View>

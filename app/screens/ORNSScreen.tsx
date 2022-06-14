@@ -1,14 +1,6 @@
 import { View } from "../components/Themed";
-import { RootTabScreenProps } from "../types";
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  Image,
-  Pressable,
-  LayoutAnimation,
-  ScrollView,
-} from "react-native";
+import { RootStackScreenProps, RootTabScreenProps } from "../types";
+import { ImageBackground, StyleSheet, Text, Image, Pressable, LayoutAnimation, ScrollView } from "react-native";
 import { useState } from "react";
 import Alert from "../components/orns/Alerts";
 
@@ -74,7 +66,7 @@ const Card = ({ info, rotate }: CardProps) => {
             </View>
 
             <Text style={{ fontWeight: "bold" }}>{`Reporting Venue`}</Text>
-            <Text>{event["Reporting Venue"]}</Text>
+            <Text>{`${event["Reporting Venue"]}\n`}</Text>
 
             <View
               style={{
@@ -89,9 +81,7 @@ const Card = ({ info, rotate }: CardProps) => {
               <Text>{`Attire: ${event["Attire"]}`}</Text>
               <Text>{`Acknowledged Code: ${event["Acknowledged Code"]}`}</Text>
             </View>
-            <Text
-              style={{ fontSize: 10 }}
-            >{`\nNotified On: ${event["Notified On"]}`}</Text>
+            <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event["Notified On"]}`}</Text>
           </View>
         ))}
       </View>
@@ -232,7 +222,7 @@ const Card = ({ info, rotate }: CardProps) => {
   );
 };
 
-export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
+export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">) {
   const cards = [
     {
       title: "In-Camp Training",
@@ -240,7 +230,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
       event: [
         {
           code: "ICT: High Key",
-          "Reporting Venue": "To be confirmed upon activation",
+          "Reporting Venue": "MANDAI HILL CAMP",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
           End: "Sun, 14 Aug 2023, 2359 hrs",
@@ -250,7 +240,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
         },
         {
           code: "ICT: Low Key",
-          "Reporting Venue": "To be confirmed upon activation",
+          "Reporting Venue": "TEKONG",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
           End: "Sun, 14 Aug 2023, 2359 hrs",
@@ -266,7 +256,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
       event: [
         {
           code: "Manning: Ops Manning",
-          "Reporting Venue": "To be confirmed upon activation",
+          "Reporting Venue": "KHATIB CAMP",
           "Call-up Document": "-",
           Start: "Mon, 01 Aug 2023, 0730 hrs",
           End: "Sun, 14 Aug 2023, 2359 hrs",
@@ -280,9 +270,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
 
   const [select, setSelected] = useState(-1);
 
-  const totalEvent = cards
-    .map((card) => card.event.length)
-    .reduce((x, y) => x + y);
+  const totalEvent = cards.map((card) => card.event.length).reduce((x, y) => x + y);
 
   return (
     <ScrollView>
@@ -292,9 +280,7 @@ export default function ORNSScreen({ navigation }: RootTabScreenProps<"ORNS">) {
             key={index}
             style={{ width: "100%", display: "flex", alignItems: "center" }}
             onPress={() => {
-              LayoutAnimation.configureNext(
-                LayoutAnimation.Presets.easeInEaseOut
-              );
+              LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
               index === select ? setSelected(-1) : setSelected(index);
             }}
           >

@@ -1,15 +1,11 @@
-import { Button, Pressable, StyleSheet, TouchableOpacity } from "react-native";
-import { RootTabScreenProps } from "../types";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import { RootStackScreenProps } from "../types";
 import { Text } from "../components/Themed";
 import { View, Image, ImageBackground } from "react-native";
 
-import CheckBox from "../components/CheckBox";
-import Layout from "../constants/Layout";
 import LoginLayout from "../components/Layout/LoginLayout";
 
-export default function WelcomeScreen({
-  navigation,
-}: RootTabScreenProps<"Welcome">) {
+export default function WelcomeScreen({ navigation }: RootStackScreenProps<"Welcome">) {
   const loginOptions = [
     {
       title: "Singpass",
@@ -21,10 +17,7 @@ export default function WelcomeScreen({
   return (
     <LoginLayout>
       <View style={styles.container}>
-        <ImageBackground
-          style={styles.backgroundImage}
-          source={require("../assets/welcomeBackground.png")}
-        >
+        <ImageBackground style={styles.backgroundImage} source={require("../assets/welcomeBackground.png")}>
           <Text
             style={{
               width: "80%",
@@ -58,10 +51,7 @@ export default function WelcomeScreen({
                 }}
                 style={styles.button}
               >
-                <Image
-                  style={{ width: "100%", height: "100%" }}
-                  source={{ uri: option.uri }}
-                />
+                <Image style={{ width: "100%", height: "100%" }} source={{ uri: option.uri }} />
               </TouchableOpacity>
             ))}
           </View>
