@@ -17,13 +17,13 @@ export default function Alert({ totalEvent }: Alerts) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
+      <View style={{ ...styles.card, borderColor: totalEvent ? "#FF0000" : "transparent" }}>
         <View style={styles.alertTab}>
-          <Text style={styles.textAlert}>{totalEvent}</Text>
+          <Text style={{ ...styles.textAlert, color: totalEvent ? "#FF0000" : "#FFA3A3" }}>{totalEvent}</Text>
           <Text
             style={{
               fontSize: 20,
-              color: "red",
+              color: totalEvent ? "#FF0000" : "#FFA3A3",
               textAlign: "center",
             }}
           >
@@ -31,9 +31,7 @@ export default function Alert({ totalEvent }: Alerts) {
           </Text>
         </View>
         {totalEvent ? (
-          <View
-            style={{ width: "100%", display: "flex", alignItems: "center" }}
-          >
+          <View style={{ width: "100%", display: "flex", alignItems: "center" }}>
             <View
               style={{
                 height: 30,
@@ -98,9 +96,7 @@ export default function Alert({ totalEvent }: Alerts) {
                     Acknowledge
                   </Text>
                 </TouchableOpacity>
-                <Text
-                  style={{ fontSize: 10, margin: 10 }}
-                >{`Notified On: ${event["Notified On"]}`}</Text>
+                <Text style={{ fontSize: 10, margin: 10 }}>{`Notified On: ${event["Notified On"]}`}</Text>
               </View>
             </View>
           </View>
@@ -115,7 +111,6 @@ export default function Alert({ totalEvent }: Alerts) {
 const styles = {
   textAlert: {
     fontSize: 48,
-    color: "red",
     paddingHorizontal: 10,
   },
   alertTab: {
@@ -131,7 +126,7 @@ const styles = {
   container: {
     display: "flex",
     width: "100%",
-    height: 600,
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "flex-end",
   },
@@ -139,11 +134,11 @@ const styles = {
     width: 356,
     margin: 10,
     borderWidth: 3,
-    borderColor: "red",
     borderRadius: 20,
+    backgroundColor: "#FFFAFA",
     display: "flex",
     alignSelf: "center",
     alignItems: "center",
-    padding: 5,
+    padding: 10,
   },
 };
