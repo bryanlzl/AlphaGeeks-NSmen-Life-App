@@ -27,6 +27,7 @@ export type RootStackParamList = {
   ClaimsPayment: undefined;
   SubmitClaims: undefined;
   UserGoalsScreen: undefined;
+  IpptBookingScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Screen>;

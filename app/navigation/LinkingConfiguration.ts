@@ -62,6 +62,12 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
 
+      IpptBookingScreen: {
+        screens: {
+          IpptBookingScreen: "ipptBooking",
+        },
+      },
+
       WorkoutScreen: {
         screens: {
           WorkoutScreen: "workout",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RootTabScreenProps } from "../../types";
 import { Text, View } from "../../components/Themed";
 import DropDownPicker from "react-native-dropdown-picker";
-import { StyleSheet, ScrollView, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, ScrollView, Image, TextInput, TouchableOpacity } from "react-native";
 
 export default function WorkoutScreen({ navigation }: RootTabScreenProps<"Profile">) {
   const [open, setOpen] = useState(false);

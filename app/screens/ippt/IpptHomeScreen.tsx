@@ -10,7 +10,7 @@ export default function IpptHomeScreen({ navigation }: RootStackScreenProps<"Ipp
     const data = [
       { title: "Set Fitness Goals", description: "Go for Gold!", alerts: "2 active goals", image: graph, href: "UserGoalsScreen" },
       { title: "Workout in a group", description: "Join an exercise group!", alerts: "4 groups near you", image: workGroup, href: "WorkoutScreen" },
-      { title: "Book IPPT / NS Fit session", description: "Your window is closing!", alerts: "", image: calendar, href: "Profile" },
+      { title: "Book IPPT / NS Fit session", description: "Your window is closing!", alerts: "", image: calendar, href: "IpptBookingScreen" },
     ];
 
     return (
