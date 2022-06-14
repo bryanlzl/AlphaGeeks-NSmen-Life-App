@@ -9,48 +9,49 @@ import { RootStackParamList } from "../types";
 import { LinkingOptions } from "@react-navigation/native";
 
 const linking: LinkingOptions<RootStackParamList> = {
-  prefixes: [Linking.makeUrl("/")],
-  config: {
-    screens: {
-      Root: {
+    prefixes: [Linking.makeUrl("/")],
+    config: {
         screens: {
-          Home: {
-            screens: {
-              HomeScreen: "home",
+            Root: {
+                screens: {
+                    Home: {
+                        screens: {
+                            HomeScreen: "home",
+                        },
+                    },
+                    Alerts: {
+                        screens: {
+                            AlertsScreen: "alerts",
+                        },
+                    },
+                    Profile: {
+                        screens: {
+                            ProfileScreen: "profile",
+                        },
+                    },
+                },
             },
-          },
-          Alerts: {
-            screens: {
-              AlertsScreen: "alerts",
+            Modal: "modal",
+            NotFound: "*",
+
+            Welcome: {
+                screens: {
+                    WelcomeScreen: "welcome",
+                },
             },
-          },
-          Profile: {
-            screens: {
-              ProfileScreen: "profile",
+
+            ORNS: {
+                screens: {
+                    ORNSScreen: "orns",
+                },
             },
-          },
-        },
-      },
-      Modal: "modal",
-      NotFound: "*",
 
-      Welcome: {
-        screens: {
-          WelcomeScreen: "welcome",
+            SingpassLogin: {
+                screens: {
+                    SingpassLoginScreen: "singpassLogin",
+                },
+            },
         },
-      },
-
-      ORNS: {
-        screens: {
-          ORNSScreen: "orns",
-        },
-      },
-
-      SingpassLogin: {
-        screens: {
-          SingpassLoginScreen: "singpassLogin",
-        },
-      },
     },
 };
 
