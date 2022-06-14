@@ -27,7 +27,7 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
         <View
           style={{
             backgroundColor: "pink",
-            borderRadius: 6,
+            borderRadius: 20,
             display: "flex",
             flexDirection: "row",
             height: 25,
@@ -39,8 +39,8 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
             <Pressable
               key={index}
               style={{
-                backgroundColor: loginChoice === index ? "red" : "transparent",
-                borderRadius: loginChoice === index ? 5 : 0,
+                backgroundColor: loginChoice === index ? "#C70606" : "transparent",
+                borderRadius: loginChoice === index ? 10 : 0,
                 width: "50%",
               }}
               onPress={() => setLoginChoice(index)}
@@ -49,6 +49,7 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
                 style={{
                   color: loginChoice === index ? "white" : "black",
                   paddingHorizontal: 5,
+                  textAlign: "center",
                   textAlignVertical: "center",
                   height: "100%",
                 }}
@@ -114,14 +115,16 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
             </Pressable>
           </View>
         ) : (
-          <Image
-            style={{
-              width: 300,
-              height: 300,
-              padding: 10,
-            }}
-            source={{ uri: "https://i.imgur.com/KHfdda2.png" }}
-          />
+          <Pressable onPress={() => navigation.navigate("Root")}>
+            <Image
+              style={{
+                width: 300,
+                height: 300,
+                padding: 10,
+              }}
+              source={{ uri: "https://i.imgur.com/KHfdda2.png" }}
+            />
+          </Pressable>
         )}
       </View>
     </LoginLayout>
@@ -129,15 +132,6 @@ const SingpassLoginScreen = ({ navigation }: RootStackScreenProps<"SingpassLogin
 };
 
 const styles = StyleSheet.create({
-  logo: { width: 167, height: 184, right: 10 },
-  icons: { width: 20, height: 20, marginRight: 10 },
-  backgroundImage: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
-    height: "100%",
-  },
   container: {
     display: "flex",
     alignItems: "center",
@@ -152,7 +146,7 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 10,
     marginVertical: 10,
-    backgroundColor: "pink",
+    backgroundColor: "#F1A7A6",
     paddingHorizontal: 10,
   },
 });
