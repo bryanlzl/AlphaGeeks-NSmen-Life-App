@@ -170,6 +170,7 @@ const Card = ({ info, rotate }: CardProps) => {
                       textAlignVertical: "center",
                       fontSize: 20,
                       color: "red",
+                      fontWeight: "bold",
                     }}
                   >
                     {info.event.length} event(s)
@@ -273,7 +274,7 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
   const totalEvent = cards.map((card) => card.event.length).reduce((x, y) => x + y);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#FFE9E9", height: "100%" }}>
       <View style={styles.container}>
         {cards.map((info, index) => (
           <Pressable
@@ -297,7 +298,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     display: "flex",
     alignItems: "center",
   },
