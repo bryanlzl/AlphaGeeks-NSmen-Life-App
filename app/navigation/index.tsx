@@ -25,6 +25,7 @@ import ORNSScreen from "../screens/ORNSScreen";
 import IpptHomeScreen from "../screens/ippt/IpptHomeScreen";
 import ClaimScreen from "../screens/ClaimScreen";
 import UserGoalsScreen from "../screens/ippt/UserGoalsScreen";
+import WorkoutScreen from "../screens/ippt/WorkoutScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -48,9 +49,10 @@ function RootNavigator() {
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: "Oops!" }} />
       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="UserGoalsScreen" component={UserGoalsScreen} options={{ title: "User Goals" }} />
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
-      <Stack.Screen name="UserGoalsScreen" component={UserGoalsScreen} options={{ title: "User Goals" }} />
+      <Stack.Screen name="WorkoutScreen" component={WorkoutScreen} options={{ title: "Join a workout group" }} />
 
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -79,7 +81,7 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={{
-          title: "Home",
+          title: "",
           tabBarIcon: ({ color }) => <MCIcon name="home" color={color} />,
         }}
       />

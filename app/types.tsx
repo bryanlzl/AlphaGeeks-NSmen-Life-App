@@ -18,13 +18,11 @@ export type RootStackParamList = {
   ORNS: undefined;
   Home: undefined;
   Modal: undefined;
-  NotFound: undefined;
   Claim: undefined;
   Welcome: undefined;
   NotFound: undefined;
+  WorkoutScreen: undefined;
   SingpassLogin: undefined;
-  ORNS: undefined;
-  Home: undefined;
   IpptHomeScreen: undefined;
   UserGoalsScreen: undefined;
 };

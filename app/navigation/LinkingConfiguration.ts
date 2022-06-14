@@ -62,6 +62,12 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
 
+      WorkoutScreen: {
+        screens: {
+          WorkoutScreen: "workout",
+        },
+      },
+
       Modal: "modal",
       NotFound: "*",
     },
