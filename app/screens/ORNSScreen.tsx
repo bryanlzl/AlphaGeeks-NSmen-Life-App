@@ -270,8 +270,7 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
   ];
 
   const [select, setSelected] = useState(-1);
-
-  const totalEvent = cards.map((card) => card.event.length).reduce((x, y) => x + y);
+  const events = cards.map((card) => card.event).flat();
 
   return (
     <ScrollView style={{ backgroundColor: "#FFE9E9", height: "100%" }}>
@@ -288,7 +287,7 @@ export default function ORNSScreen({ navigation }: RootStackScreenProps<"ORNS">)
             <Card info={info} rotate={select === index} />
           </Pressable>
         ))}
-        <Alert totalEvent={totalEvent} />
+        <Alert data={events} />
       </View>
     </ScrollView>
   );
