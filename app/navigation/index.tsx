@@ -28,6 +28,8 @@ import IpptHomeScreen from "../../app/screens/ippt/IpptHomeScreen";
 import ClaimScreen from "../../app/screens/claims/ClaimsPaymentScreen";
 import SubmitClaimsScreen from "../screens/claims/SubmitClaimsScreen";
 import IpptBookingScreen from "../screens/ippt/IpptBookScreen";
+import GroupsFoundPage from "../screens/ippt/GroupsFoundScreen";
+import GroupDetailsScreen from "../screens/ippt/GroupDetailsScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -53,6 +55,8 @@ function RootNavigator() {
       <Stack.Screen name="UserGoalsScreen" component={UserGoalsScreen} options={{ title: "User Goals" }} />
       <Stack.Screen name="SingpassLogin" component={SingpassLoginScreen} options={{ headerShown: false }} />
       <Stack.Screen name="IpptHomeScreen" component={IpptHomeScreen} options={{ title: "IPPT / NS Fit" }} />
+      <Stack.Screen name="GroupsFound" component={GroupsFoundPage} options={{ headerShown: true }} />
+      <Stack.Screen name="GroupDetails" component={GroupDetailsScreen} options={{ headerShown: true }} />
       <Stack.Screen name="WorkoutScreen" component={WorkoutScreen} options={{ title: "Join a workout group" }} />
       <Stack.Screen name="ClaimsPayment" component={ClaimScreen} />
       <Stack.Screen name="SubmitClaims" component={SubmitClaimsScreen} />

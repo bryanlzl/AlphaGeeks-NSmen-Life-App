@@ -28,6 +28,8 @@ export type RootStackParamList = {
   SubmitClaims: undefined;
   UserGoalsScreen: undefined;
   IpptBookingScreen: undefined;
+  GroupsFound: undefined;
+  GroupDetails: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<RootStackParamList, Screen>;
