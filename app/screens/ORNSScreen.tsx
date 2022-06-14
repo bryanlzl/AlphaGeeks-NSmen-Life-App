@@ -6,13 +6,13 @@ import Alert from "../components/orns/Alerts";
 
 type CardData = {
   code: string;
-  "Reporting Venue": string;
-  "Call-up Document": string;
-  Start: string;
-  End: string;
-  Attire: string;
-  "Acknowledged Code": string;
-  "Notified On": string;
+  reportingVenue: string;
+  callUpDocument: string;
+  start: string;
+  end: string;
+  attire: string;
+  acknowledgedCode: string;
+  notifiedOn: string;
 };
 
 interface CardProps {
@@ -34,7 +34,7 @@ const Card = ({ info, rotate }: CardProps) => {
           overflow: "hidden",
         }}
       >
-        {data.map((event, index) => (
+        {data.map((event: any, index: any) => (
           <View
             key={index}
             style={{
@@ -61,12 +61,12 @@ const Card = ({ info, rotate }: CardProps) => {
                   width: "100%",
                 }}
               >
-                {event["code"]}
+                {event.code}
               </Text>
             </View>
 
             <Text style={{ fontWeight: "bold" }}>{`Reporting Venue`}</Text>
-            <Text>{`${event["Reporting Venue"]}\n`}</Text>
+            <Text>{`${event.reportingVenue}\n`}</Text>
 
             <View
               style={{
@@ -75,13 +75,13 @@ const Card = ({ info, rotate }: CardProps) => {
                 paddingHorizontal: 20,
               }}
             >
-              <Text>{`Call-up Document: ${event["Call-up Document"]}`}</Text>
-              <Text>{`Start: ${event["Start"]}`}</Text>
-              <Text>{`End: ${event["End"]}`}</Text>
-              <Text>{`Attire: ${event["Attire"]}`}</Text>
-              <Text>{`Acknowledged Code: ${event["Acknowledged Code"]}`}</Text>
+              <Text>{`Call-up Document: ${event.callUpDocument}`}</Text>
+              <Text>{`Start: ${event.start}`}</Text>
+              <Text>{`End: ${event.end}`}</Text>
+              <Text>{`Attire: ${event.attire}`}</Text>
+              <Text>{`Acknowledged Code: ${event.acknowledgedCode}`}</Text>
             </View>
-            <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event["Notified On"]}`}</Text>
+            <Text style={{ fontSize: 10 }}>{`\nNotified On: ${event.notifiedOn}`}</Text>
           </View>
         ))}
       </View>
