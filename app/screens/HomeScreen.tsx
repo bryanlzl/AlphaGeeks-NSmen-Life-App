@@ -12,7 +12,6 @@ interface Menu {
 
 interface RenderMenuProps {
   menus: Menu[];
-  navigation: RootTabScreenProps<"Profile">;
 }
 
 export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">) {
@@ -23,17 +22,21 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
   ];
 
   const RenderMenu = ({ menus }: RenderMenuProps) => {
-    return menus.map((m, index) => {
-      return (
-        <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
-          <View style={styles.image_tile}>
-            <Text style={styles.menu_title} key={index}>
-              {m.title}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      );
-    });
+    return (
+      <>
+        {menus.map((m, index) => {
+          return (
+            <TouchableOpacity key={index} onPress={() => navigation.navigate(m.href)}>
+              <View style={styles.image_tile}>
+                <Text style={styles.menu_title} key={index}>
+                  {m.title}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
+      </>
+    );
   };
 
   return (
@@ -45,7 +48,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<"Profile">
         <Image style={styles.image} source={nsLogo} />
       </View>
 
-      <RenderMenu menus={menuTiles} navigation={navigation} />
+      <RenderMenu menus={menuTiles} />
     </ScrollView>
   );
 }

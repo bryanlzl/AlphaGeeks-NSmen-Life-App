@@ -12,29 +12,28 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl("/")],
   config: {
     screens: {
-      Welcome: {
+      Root: {
         screens: {
-          Root: {
+          Home: {
             screens: {
-              Home: {
-                screens: {
-                  HomeScreen: "home",
-                },
-              },
-              Alerts: {
-                screens: {
-                  AlertsScreen: "alerts",
-                },
-              },
-              Profile: {
-                screens: {
-                  ProfileScreen: "profile",
-                },
-              },
+              HomeScreen: "home",
             },
           },
-          Modal: "modal",
-          NotFound: "*",
+          Alerts: {
+            screens: {
+              AlertsScreen: "alerts",
+            },
+          },
+          Profile: {
+            screens: {
+              ProfileScreen: "profile",
+            },
+          },
+        },
+      },
+
+      Welcome: {
+        screens: {
           WelcomeScreen: "welcome",
         },
       },
@@ -48,6 +47,8 @@ const linking: LinkingOptions<RootStackParamList> = {
           ORNSSCreen: "orns",
         },
       },
+      Modal: "modal",
+      NotFound: "*",
     },
   },
 };
