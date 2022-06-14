@@ -14,27 +14,27 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Welcome: {
         screens: {
-            Root: {
+          Root: {
+            screens: {
+              Home: {
                 screens: {
-                    Home: {
-                        screens: {
-                            HomeScreen: "home",
-                        },
-                    },
-                    Alerts: {
-                        screens: {
-                            AlertsScreen: "alerts",
-                        },
-                    },
-                    Profile: {
-                        screens: {
-                            ProfileScreen: "profile",
-                        },
-                    },
+                  HomeScreen: "home",
                 },
+              },
+              Alerts: {
+                screens: {
+                  AlertsScreen: "alerts",
+                },
+              },
+              Profile: {
+                screens: {
+                  ProfileScreen: "profile",
+                },
+              },
             },
-            Modal: "modal",
-            NotFound: "*",
+          },
+          Modal: "modal",
+          NotFound: "*",
           WelcomeScreen: "welcome",
         },
       },
@@ -48,27 +48,11 @@ const linking: LinkingOptions<RootStackParamList> = {
           UserIDLoginScreen: "userIDLogin",
         },
       },
-      Root: {
+      ORNS: {
         screens: {
-          Profile: {
-            screens: {
-              ProfileScreen: "profile",
-            },
-          },
-          Alerts: {
-            screens: {
-              AlertsScreen: "alerts",
-            },
-          },
-          Logout: {
-            screens: {
-              LogoutScreen: "logout",
-            },
-          },
+          ORNSSCreen: "orns",
         },
       },
-      Modal: "modal",
-      NotFound: "*",
     },
   },
 };
