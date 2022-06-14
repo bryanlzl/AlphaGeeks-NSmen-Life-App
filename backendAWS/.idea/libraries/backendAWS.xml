@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="backendAWS">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/.serverless/backendAWS.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

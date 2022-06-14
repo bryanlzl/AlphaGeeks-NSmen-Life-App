@@ -50,6 +50,18 @@ const linking: LinkingOptions<RootStackParamList> = {
         },
       },
 
+      GroupsFound: {
+        screens: {
+          GroupsFoundPage: "groupFound",
+        },
+      },
+
+      GroupDetails: {
+        screens: {
+          GroupDetailsPage: "groupDetails",
+        },
+      },
+
       UserGoalsScreen: {
         screens: {
           UserGoalsScreen: "usergoals",

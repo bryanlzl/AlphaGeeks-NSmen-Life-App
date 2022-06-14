@@ -81,7 +81,7 @@ export default function SubmitClaimsScreen({ navigation }: RootStackScreenProps<
   };
 
   return (
-    <View style={{ backgroundColor: "#FFE9E9", width: "100%", height: "100%" }}>
+    <View style={{ backgroundColor: "#FFE9E9", width: "100%", height: "100%", paddingVertical: 50 }}>
       {showModal && <Modal />}
       <View style={styles.container}>
         <View style={{ backgroundColor: "transparent", width: "100%", display: "flex", flexDirection: "column" }}>
