@@ -35,7 +35,7 @@
 -   [React Native](https://reactnative.dev/)
 -   [AWS Amplify](https://aws.amazon.com/amplify/)
 -   [AWS Lambda](https://aws.amazon.com/lambda/)
-
+-   [Figma] (https://www.figma.com/file/RNWZWwdyvDKB00bTNO9Qhp/DSTA-AlphaGeeks-BrainHack-2022?node-id=65%3A530)
 <br />
 
 <!-- GETTING STARTED -->
